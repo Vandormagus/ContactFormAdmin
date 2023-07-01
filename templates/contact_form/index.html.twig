@@ -42,14 +42,16 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            {% for i in 1..max_page %}
-                {% if( i != act_page )%}
-                    <a href="{{ path('app_contact_form_index') }}?page={{ i }}">[{{ i }}]</a>
-                {%  else %}    
-                    [{{ i }}]
-                {% endif %}
+            {% if max_page > 0 %}
+                {% for i in 1..max_page %}
+                    {% if( i != act_page )%}
+                        <a href="{{ path('app_contact_form_index') }}?page={{ i }}">[{{ i }}]</a>
+                    {%  else %}    
+                        [{{ i }}]
+                    {% endif %}
 
-            {% endfor %}
+                {% endfor %}
+            {%  endif %}
         </div>
     </div>
 

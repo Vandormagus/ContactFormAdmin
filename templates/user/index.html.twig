@@ -38,16 +38,18 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            {% for i in 1..max_page %}
-                {% if( i != act_page )%}
-                    <a href="{{ path('app_user_index') }}?page={{ i }}">[{{ i }}]</a>
-                {%  else %}    
-                    [{{ i }}]
-                {% endif %}
+            {% if max_page > 0 %}
+                {% for i in 1..max_page %}
+                    {% if( i != act_page )%}
+                        <a href="{{ path('app_user_index') }}?page={{ i }}">[{{ i }}]</a>
+                    {%  else %}    
+                        [{{ i }}]
+                    {% endif %}
 
-            {% endfor %}
+                {% endfor %}
+            {%  endif %}
         </div>
     </div>
 
-            <a class="btn btn-primary" href="{{ path('app_user_new') }}">Új felhasználó</a>
+    <a class="btn btn-primary" href="{{ path('app_user_new') }}">Új felhasználó</a>
 {% endblock %}

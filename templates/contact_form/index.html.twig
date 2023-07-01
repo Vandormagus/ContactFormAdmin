@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Üzenet lista{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Üzenet lista</h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:10%;">ID</th>
+                        <th style="width:20%;">Név</th>
+                        <th style="width:20%;">E-mail</th>
+                        <th style="width:50%;">Üzenet</th>
+                        <!--th>actions</th-->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact_form in contact_forms %}
+                        <tr>
+                            <td style="width:10%;">{{ contact_form.id }}</td>
+                            <td style="width:20%;">{{ contact_form.Name }}</td>
+                            <td style="width:20%;">{{ contact_form.Email }}</td>
+                            <td style="width:50%;">{{ contact_form.Note }}</td>
+                            <!--td>
+                                <a href="{{ path('app_contact_form_show', {'id': contact_form.id}) }}">show</a>
+                                <a href="{{ path('app_contact_form_edit', {'id': contact_form.id}) }}">edit</a>
+                            </td-->
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="4">Nincs találat!</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% for i in 1..max_page %}
+                {% if( i != act_page )%}
+                    <a href="{{ path('app_contact_form_index') }}?page={{ i }}">[{{ i }}]</a>
+                {%  else %}    
+                    [{{ i }}]
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

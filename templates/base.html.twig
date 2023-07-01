@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+
+            {{ encore_entry_link_tags('bootstrap') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+
+
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 10px 30px;">
+                <div>
+                    {% if( app.user.userIdentifier is defined) %}
+                        Bejelentkezett neve: {{ app.user.userIdentifier }}
+
+                    {% endif %}
+                </div>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_contact_form_new') }}">Új üzenet</a> 
+                        </li>
+                        {% if( app.user.userIdentifier is defined) %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_user_index') }}">Felhasználók</a> 
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_contact_form_index') }}">Üzenetek</a> 
+                            </li>
+                        {% endif %}
+                        <li class="nav-item" style="margin-left:30px;">
+                            {% if ( app.user ) %}
+                                <a class="btn btn-warning" href="{{ path('app_logout') }}">Kijelentkezés</a>
+                            {% else %}
+                                <a class="btn btn-primary" href="{{ path('app_login') }}">Bejelentkezés</a> 
+                            {%  endif %}
+
+                        </li>
+
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+
+
+
+        <div class="container">
+            {% block body %}{% endblock %}
+        </div>
+    </body>
+</html>

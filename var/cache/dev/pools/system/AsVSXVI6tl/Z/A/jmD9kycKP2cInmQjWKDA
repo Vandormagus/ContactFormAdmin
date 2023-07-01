@@ -1,0 +1,3 @@
+<?php //App%255CController%255CContactFormController%2523configureCrud
+
+return [PHP_INT_MAX, []];

@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User index{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Felhasználó lista</h1>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="width:10%;">ID</th>
+                        <th style="width:70%;">Név</th>
+
+                        <th style="width:20%;">Művelet</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td style="width:10%;">{{ user.id }}</td>
+                            <td  style="width:70%;">{{ user.name }}</td>
+
+                            <td  style="width:20%;">
+                                <a href="{{ path('app_user_show', {'id': user.id}) }}">Megnéz</a>
+                                <a href="{{ path('app_user_edit', {'id': user.id}) }}">Szerkeszt</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">Nincs találat!</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            {% for i in 1..max_page %}
+                {% if( i != act_page )%}
+                    <a href="{{ path('app_user_index') }}?page={{ i }}">[{{ i }}]</a>
+                {%  else %}    
+                    [{{ i }}]
+                {% endif %}
+
+            {% endfor %}
+        </div>
+    </div>
+
+            <a class="btn btn-primary" href="{{ path('app_user_new') }}">Új felhasználó</a>
+{% endblock %}

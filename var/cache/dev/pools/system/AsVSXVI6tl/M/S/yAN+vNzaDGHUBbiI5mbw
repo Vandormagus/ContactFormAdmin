@@ -1,0 +1,35 @@
+<?php //App%255CDTO%255CUserDTO%2524password
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Validator\\Constraints\\NotBlank'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\NotBlank')),
+        clone ($p['Symfony\\Component\\Validator\\Constraints\\Length'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Validator\\Constraints\\Length')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'groups' => [
+                [
+                    'Default',
+                ],
+                [
+                    'Default',
+                ],
+            ],
+            'message' => [
+                'A jelszó mező kitöltése kötelező.',
+            ],
+            'minMessage' => [
+                1 => 'A jelszónak legalább 6 karakter hosszúnak kell lennie.',
+            ],
+            'min' => [
+                1 => 6,
+            ],
+        ],
+    ],
+    [
+        $o[0],
+        $o[1],
+    ],
+    []
+); }];

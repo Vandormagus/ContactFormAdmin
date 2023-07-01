@@ -1,0 +1,32 @@
+
+
+{{ form_start(form) }}
+    <div>
+        
+        
+        <label for="{{ form.name.vars.id }}">Név</label>
+        {{ form_widget(form.name, { 'attr': { 'class': 'form-control' } }) }}
+        {% if form.name.vars.errors|length > 0 %}
+            <ul class="alert alert-danger " >
+                {% for error in form.name.vars.errors %}
+                    <li style="list-style-type: none;" class="small">{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div>
+        
+        <label for="{{ form.password.vars.id }}">Jelszó</label>
+        {{ form_widget(form.password, { 'attr': { 'class': 'form-control' } }) }}
+        {% if form.password.vars.errors|length > 0 %}
+            <ul class="alert alert-danger " >
+                {% for error in form.password.vars.errors %}
+                    <li style="list-style-type: none;" class="small">{{ error.message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div>
+        {{ form_widget(form.save, { 'attr': { 'class': 'btn btn-primary' } }) }}
+    </div>
+{{ form_end(form) }}

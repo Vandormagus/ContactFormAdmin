@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Új üzenet{% endblock %}
+
+{% block body %}
+    
+        
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Új üzenet</h1>
+
+                {% if ret_data.success_message is defined %}
+                    <div class="alert alert-success">
+                        {{ ret_data.success_message }}
+                    </div>
+                {% endif %}
+                {% if ret_data.error_message is defined %}
+                    <div class="alert alert-danger">
+                        {{ ret_data.error_message | raw }}
+                    </div>
+                {% endif %}
+                {{ include('contact_form/_form.html.twig') }}
+
+
+
+            </div>
+        </div>
+    
+{% endblock %}

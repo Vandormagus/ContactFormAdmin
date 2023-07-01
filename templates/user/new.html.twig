@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Új felhasználó</h1>
+
+            {% if ret_data.error_message is defined %}
+                <div class="alert alert-danger">
+                    {{ ret_data.error_message | raw }}
+                </div>
+            {% endif %}
+
+            {{ include('user/_form.html.twig') }}
+
+            <a href="{{ path('app_user_index') }}">Vissza a listához!</a>
+        </div>
+    </div>
+{% endblock %}
